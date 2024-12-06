@@ -6,47 +6,93 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 08:38:01 by cwolf             #+#    #+#             */
-/*   Updated: 2024/12/05 17:21:38 by cwolf            ###   ########.fr       */
+/*   Updated: 2024/12/06 11:02:16 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	static	in_string(int bit);
+void	static	get_byte(int bit);
+void	static	convert_to_char(int *byte);
+void	static	char_into_string(char character);
 
-void	static	signal_handler(int signum, char *byte)
+void	static	signal_handler(int signum)
 {
 	if (signum == SIGUSR1)
 	{
-		in_string(0);
+		get_byte(0);
 	}
 	else if (signum == SIGUSR2)
 	{
-		in_string(1);
+		get_byte(1);
 	}
 }
 
-void	static	in_string(int bit)
+void	static	get_byte(int bit)
 {
-	char	byte[8];
-	int		i;
+	static int	byte[8];
+	static int	bit_index = 0;
+	int			i;
 
+	byte[bit_index] = bit;
+	bit_index++;
+	if (bit_index == 8)
+	{
+		convert_to_char(byte);
+		bit_index = 0;
+		i = 0;
+		while (i < 8)
+		{
+			byte[i] = 0;
+			i++;
+		}
+	}
+}
+
+void	static	convert_to_char(int *byte)
+{
+	int		i;
+	int		ascii_val;
+	char	character;
+
+	ascii_val = 0;
 	i = 0;
-	if (bit == 0)
+	while (i < 8)
 	{
-		byte[i] = '0';
+		ascii_val = ascii_val * 2 + byte[i];
+		i++;
 	}
-	else if (bit == 1)
+	character = (char)ascii_val;
+	char_into_string(character);
+}
+
+void	static	char_into_string(char character)
+{
+	static char	*string;
+	char		*c;
+
+	if (character == '\0')
 	{
-		byte[i] = '0';
+		ft_printf("%s\n", string);
+		string = "";
+		return ;
 	}
-	i++;
-	ft_printf("String: %s\n", byte);
+	c = malloc(sizeof(char) * 2);
+	if (c == NULL)
+		return ;
+	c[0] = character;
+	c[1] = '\0';
+	if (string == NULL)
+	{
+		string = ft_strdup("");
+	}
+	string = ft_strjoin(string, c);
+	free(c);
 }
 
 int	main(void)
 {
-	ft_printf("My PID: %d", getpid());
+	ft_printf("My PID: %d\n", getpid());
 	while (1)
 	{
 		signal(SIGUSR1, signal_handler);
@@ -55,13 +101,3 @@ int	main(void)
 	}
 	return (0);
 }
-
-// char bin_to_ascii(const char *bin)
-// {
-// int i;
-// int decimal = 0;
-
-// // Über die 8 Bits iterieren und den Dezimalwert berechnen
-// for (i = 0; i < 8; i++) {
-// 	decimal = decimal * 2 + (bin[i] - '0'); // '0' wird subtrahiert, um von char zu int zu konvertieren
-// }

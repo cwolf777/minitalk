@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:08 by cwolf             #+#    #+#             */
-/*   Updated: 2024/12/05 15:18:25 by cwolf            ###   ########.fr       */
+/*   Updated: 2024/12/06 11:02:25 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	static	convert_to_binary(int nbr, int pid)
 		i--;
 	}
 	i = 7;
-	while (nbr >= 1) // && i >= 0
+	while (nbr >= 1)
 	{
 		arr[i] = nbr % 2;
 		nbr = nbr / 2;
