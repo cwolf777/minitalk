@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 CLIENT = client
 SERVER = server
 LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT = $(LIBFT_DIR)/libft.
 CLIENT_SOURCES = client.c
 SERVER_SOURCES = server.c
 CLIENT_OBJECTS = $(CLIENT_SOURCES:.c=.o)
