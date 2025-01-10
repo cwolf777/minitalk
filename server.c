@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 08:38:01 by cwolf             #+#    #+#             */
-/*   Updated: 2024/12/06 11:02:16 by cwolf            ###   ########.fr       */
+/*   Updated: 2024/12/06 13:14:19 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,34 @@ void	static	char_into_string(char character)
 {
 	static char	*string;
 	char		*c;
+	char		*temp;
 
 	if (character == '\0')
 	{
 		ft_printf("%s\n", string);
-		string = "";
+		free(string);
+		string = NULL;
 		return ;
 	}
-	c = malloc(sizeof(char) * 2);
+	c = malloc(sizeof(char) * 2);   //neue ft allokiere c, und joine string
 	if (c == NULL)
+	{
+		free(string);
+		string = NULL;
 		return ;
+	}
 	c[0] = character;
 	c[1] = '\0';
 	if (string == NULL)
-	{
-		string = ft_strdup("");
-	}
-	string = ft_strjoin(string, c);
+		temp = ft_strjoin("", c);
+	else
+		temp = ft_strjoin(string, c);
 	free(c);
+	free(string);
+	string = NULL;
+	if (!temp)
+		exit(1);
+	string = temp;
 }
 
 int	main(void)

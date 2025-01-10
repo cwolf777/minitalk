@@ -2,9 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CLIENT = client
 SERVER = server
-# NAME = minitalk
 LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.
+LIBFT = $(LIBFT_DIR)/libft.a
 CLIENT_SOURCES = client.c
 SERVER_SOURCES = server.c
 CLIENT_OBJECTS = $(CLIENT_SOURCES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:08 by cwolf             #+#    #+#             */
-/*   Updated: 2024/12/06 11:02:25 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/10 19:49:11 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		ft_printf("Sytaxerror! Pls insert ./minitalk <PID> <String>\n");
+		ft_printf("Sytaxerror! Please insert ./client <PID> <String>\n");
 		exit(1);
 	}
 }
