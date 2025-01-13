@@ -6,15 +6,15 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:08 by cwolf             #+#    #+#             */
-/*   Updated: 2025/01/10 19:49:11 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/10 22:16:26 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	static	get_ascii(int pid, char *str);
-void	static	convert_to_binary(int nbr, int pid);
-void	static	send_to_server(int *arr, int pid);
+static	void	get_ascii(int pid, char *str);
+static	void	convert_to_binary(int nbr, int pid);
+static	void	send_to_server(int *arr, int pid);
 
 int	main(int argc, char *argv[])
 {
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	}
 }
 
-void	static	get_ascii(int pid, char *str)
+static	void	get_ascii(int pid, char *str)
 {
 	int	i;
 	int	nbr;
@@ -50,7 +50,7 @@ void	static	get_ascii(int pid, char *str)
 	return ;
 }
 
-void	static	convert_to_binary(int nbr, int pid)
+static	void	convert_to_binary(int nbr, int pid)
 {
 	int	arr[8];
 	int	i;
@@ -71,7 +71,7 @@ void	static	convert_to_binary(int nbr, int pid)
 	send_to_server(arr, pid);
 }
 
-void	static	send_to_server(int *arr, int pid)
+static	void	send_to_server(int *arr, int pid)
 {
 	int	i;
 

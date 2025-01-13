@@ -6,20 +6,21 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 08:38:01 by cwolf             #+#    #+#             */
-/*   Updated: 2024/12/06 13:14:19 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/10 22:05:37 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	static	get_byte(int bit);
-void	static	convert_to_char(int *byte);
-void	static	char_into_string(char character);
+static	void	get_byte(int bit);
+static	void	convert_to_char(int *byte);
+static	void	char_into_string(char character);
 
-void	static	signal_handler(int signum)
+static	void	signal_handler(int signum)
 {
 	if (signum == SIGUSR1)
 	{
+		ft_printf("Test1\n");
 		get_byte(0);
 	}
 	else if (signum == SIGUSR2)
@@ -28,7 +29,7 @@ void	static	signal_handler(int signum)
 	}
 }
 
-void	static	get_byte(int bit)
+static	void	get_byte(int bit)
 {
 	static int	byte[8];
 	static int	bit_index = 0;
@@ -49,7 +50,7 @@ void	static	get_byte(int bit)
 	}
 }
 
-void	static	convert_to_char(int *byte)
+static	void	convert_to_char(int *byte)
 {
 	int		i;
 	int		ascii_val;
@@ -63,10 +64,11 @@ void	static	convert_to_char(int *byte)
 		i++;
 	}
 	character = (char)ascii_val;
+	ft_printf("Test2\n");
 	char_into_string(character);
 }
 
-void	static	char_into_string(char character)
+static	void	char_into_string(char character)
 {
 	static char	*string;
 	char		*c;
@@ -91,13 +93,15 @@ void	static	char_into_string(char character)
 	if (string == NULL)
 		temp = ft_strjoin("", c);
 	else
+	{
 		temp = ft_strjoin(string, c);
+		free(string);
+	}
 	free(c);
-	free(string);
-	string = NULL;
 	if (!temp)
 		exit(1);
 	string = temp;
+	ft_printf("Test3\n");
 }
 
 int	main(void)
