@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 08:38:01 by cwolf             #+#    #+#             */
-/*   Updated: 2025/01/10 22:05:37 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/13 10:47:05 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static	void	signal_handler(int signum)
 {
 	if (signum == SIGUSR1)
 	{
-		ft_printf("Test1\n");
 		get_byte(0);
 	}
 	else if (signum == SIGUSR2)
@@ -64,7 +63,6 @@ static	void	convert_to_char(int *byte)
 		i++;
 	}
 	character = (char)ascii_val;
-	ft_printf("Test2\n");
 	char_into_string(character);
 }
 
@@ -77,17 +75,11 @@ static	void	char_into_string(char character)
 	if (character == '\0')
 	{
 		ft_printf("%s\n", string);
-		free(string);
-		string = NULL;
-		return ;
+		return (free(string));
 	}
-	c = malloc(sizeof(char) * 2);   //neue ft allokiere c, und joine string
+	c = malloc(sizeof(char) * 2);
 	if (c == NULL)
-	{
-		free(string);
-		string = NULL;
-		return ;
-	}
+		return (free(string));
 	c[0] = character;
 	c[1] = '\0';
 	if (string == NULL)
@@ -101,7 +93,6 @@ static	void	char_into_string(char character)
 	if (!temp)
 		exit(1);
 	string = temp;
-	ft_printf("Test3\n");
 }
 
 int	main(void)

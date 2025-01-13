@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:08 by cwolf             #+#    #+#             */
-/*   Updated: 2025/01/10 22:16:26 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/13 10:36:49 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static	void	send_to_server(int *arr, int pid)
 		{
 			kill(pid, SIGUSR1);
 		}
-		usleep(50);
+		usleep(5000);
 		i++;
 	}
 }
