@@ -6,102 +6,52 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 08:38:01 by cwolf             #+#    #+#             */
-/*   Updated: 2025/01/13 10:47:05 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/27 16:57:14 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static	void	get_byte(int bit);
-static	void	convert_to_char(int *byte);
-static	void	char_into_string(char character);
-
-static	void	signal_handler(int signum)
+static void	action(int signo, siginfo_t *info, void *context)
 {
-	if (signum == SIGUSR1)
-	{
-		get_byte(0);
-	}
-	else if (signum == SIGUSR2)
-	{
-		get_byte(1);
-	}
-}
+	static int				i = 0;
+	int						pid;
+	static unsigned char	c = 0;
 
-static	void	get_byte(int bit)
-{
-	static int	byte[8];
-	static int	bit_index = 0;
-	int			i;
-
-	byte[bit_index] = bit;
-	bit_index++;
-	if (bit_index == 8)
+	(void)context;
+	pid = info->si_pid;
+	c |= (signo == SIGUSR1);
+	if (i < 7)
 	{
-		convert_to_char(byte);
-		bit_index = 0;
-		i = 0;
-		while (i < 8)
-		{
-			byte[i] = 0;
-			i++;
-		}
-	}
-}
-
-static	void	convert_to_char(int *byte)
-{
-	int		i;
-	int		ascii_val;
-	char	character;
-
-	ascii_val = 0;
-	i = 0;
-	while (i < 8)
-	{
-		ascii_val = ascii_val * 2 + byte[i];
+		c <<= 1;
 		i++;
 	}
-	character = (char)ascii_val;
-	char_into_string(character);
-}
-
-static	void	char_into_string(char character)
-{
-	static char	*string;
-	char		*c;
-	char		*temp;
-
-	if (character == '\0')
-	{
-		ft_printf("%s\n", string);
-		return (free(string));
-	}
-	c = malloc(sizeof(char) * 2);
-	if (c == NULL)
-		return (free(string));
-	c[0] = character;
-	c[1] = '\0';
-	if (string == NULL)
-		temp = ft_strjoin("", c);
 	else
 	{
-		temp = ft_strjoin(string, c);
-		free(string);
+		if (signo == SIGUSR1)
+			c <<= 1; // Letztes Bit verschieben, falls SIGUSR1
+		ft_printf("Test\n");
+		// if (c == '\0')
+		// {
+		// 	//Beenden des Prozesses 
+		// }
+		ft_putchar_fd(c, 1);
+		c = 0;
+		//kill?
 	}
-	free(c);
-	if (!temp)
-		exit(1);
-	string = temp;
 }
 
 int	main(void)
 {
+	struct sigaction	s_sigaction;
+
 	ft_printf("My PID: %d\n", getpid());
+	s_sigaction.__sigaction_u.__sa_sigaction = action;
+	s_sigaction.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &s_sigaction, NULL);
+	sigaction(SIGUSR2, &s_sigaction, NULL);
 	while (1)
 	{
-		signal(SIGUSR1, signal_handler);
-		signal(SIGUSR2, signal_handler);
 		pause();
 	}
 	return (0);

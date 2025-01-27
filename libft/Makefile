@@ -1,14 +1,15 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I./
 NAME = libft.a
-SOURCES = ft_isalnum.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_strlen.c ft_tolower.c ft_toupper.c ft_isalpha.c ft_strlcat.c \
-ft_strlcpy.c ft_bzero.c ft_memcpy.c ft_memset.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
-ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-ft_putchar_fd.c ft_putendl_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_printf.c ft_printhexa.c ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_toupper.c \
-ft_unsigned_putnbr_fd.c ft_print_base10.c ft_print_base16.c ft_print_characters.c \
-ft_print_percent.c ft_print_pointer.c
-BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-ft_lstclear_bonus.c ft_lstiter_bonus.c
+LIBFT_DIR = ./libft
+GNL_DIR = ./get_next_line
+SOURCES = $(LIBFT_DIR)/ft_isalnum.c $(LIBFT_DIR)/ft_isascii.c $(LIBFT_DIR)/ft_isdigit.c $(LIBFT_DIR)/ft_isprint.c $(LIBFT_DIR)/ft_strlen.c $(LIBFT_DIR)/ft_tolower.c $(LIBFT_DIR)/ft_toupper.c $(LIBFT_DIR)/ft_isalpha.c $(LIBFT_DIR)/ft_strlcat.c \
+$(LIBFT_DIR)/ft_strlcpy.c $(LIBFT_DIR)/ft_bzero.c $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft_memset.c $(LIBFT_DIR)/ft_memmove.c $(LIBFT_DIR)/ft_memchr.c $(LIBFT_DIR)/ft_memcmp.c $(LIBFT_DIR)/ft_strchr.c $(LIBFT_DIR)/ft_strrchr.c $(LIBFT_DIR)/ft_strncmp.c \
+$(LIBFT_DIR)/ft_strnstr.c $(LIBFT_DIR)/ft_atoi.c $(LIBFT_DIR)/ft_calloc.c $(LIBFT_DIR)/ft_strdup.c $(LIBFT_DIR)/ft_substr.c $(LIBFT_DIR)/ft_strjoin.c $(LIBFT_DIR)/ft_strtrim.c $(LIBFT_DIR)/ft_split.c $(LIBFT_DIR)/ft_itoa.c $(LIBFT_DIR)/ft_strmapi.c $(LIBFT_DIR)/ft_striteri.c \
+$(LIBFT_DIR)/ft_putchar_fd.c $(LIBFT_DIR)/ft_putendl_fd.c $(LIBFT_DIR)/ft_putstr_fd.c $(LIBFT_DIR)/ft_putnbr_fd.c $(LIBFT_DIR)/ft_printf.c $(LIBFT_DIR)/ft_printhexa.c $(LIBFT_DIR)/ft_putchar_fd.c $(LIBFT_DIR)/ft_putnbr_fd.c $(LIBFT_DIR)/ft_putstr_fd.c $(LIBFT_DIR)/ft_toupper.c \
+$(LIBFT_DIR)/ft_unsigned_putnbr_fd.c $(LIBFT_DIR)/ft_print_base10.c $(LIBFT_DIR)/ft_print_base16.c $(LIBFT_DIR)/ft_print_characters.c \
+$(LIBFT_DIR)/ft_print_percent.c $(LIBFT_DIR)/ft_print_pointer.c $(LIBFT_DIR)/ft_lstnew.c $(LIBFT_DIR)/ft_lstadd_front.c $(LIBFT_DIR)/ft_lstsize.c $(LIBFT_DIR)/ft_lstlast.c $(LIBFT_DIR)/ft_lstadd_back.c $(LIBFT_DIR)/ft_lstdelone.c \
+$(LIBFT_DIR)/ft_lstclear.c $(LIBFT_DIR)/ft_lstiter.c $(GNL_DIR)/get_next_line.c $(GNL_DIR)/get_next_line_utils.c
 OBJECTS = $(SOURCES:.c=.o)
 BONUS_OBJECTS = $(BONUS:.c=.o)
 
@@ -28,7 +29,4 @@ fclean: clean
 
 re: fclean all
 
-bonus:	$(OBJECTS) $(BONUS_OBJECTS)
-			ar rcs $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

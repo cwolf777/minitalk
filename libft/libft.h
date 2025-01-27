@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:09:35 by cwolf             #+#    #+#             */
-/*   Updated: 2024/11/19 16:39:08 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:34:10 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <stddef.h>
+# include "./get_next_line/get_next_line.h"
 
 typedef struct s_list
 {
