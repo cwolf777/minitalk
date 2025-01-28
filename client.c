@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:08 by cwolf             #+#    #+#             */
-/*   Updated: 2025/01/28 10:04:04 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/01/28 10:48:05 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int	main(int argc, char *argv[])
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
+		if (pid <= 0)
+		{
+			ft_printf("Error: Wrong PID\n");
+			exit (1);
+		}
 		str = argv[2];
 		while (str[i] != '\0')
 		{
