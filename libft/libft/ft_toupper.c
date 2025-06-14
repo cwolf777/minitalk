@@ -6,11 +6,11 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:36:27 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/22 14:35:31 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 15:53:02 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_toupper(int a)
 {

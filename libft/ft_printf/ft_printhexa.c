@@ -6,11 +6,11 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 08:11:32 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/25 09:28:18 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 16:06:01 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	inside_function(int count, unsigned long int number,
 				int check_error, int token);

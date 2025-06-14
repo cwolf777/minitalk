@@ -6,11 +6,11 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 09:35:47 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/23 15:02:27 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 15:56:50 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putnbr_fd(int n, int fd)
 {

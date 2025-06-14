@@ -6,7 +6,7 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:25:25 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/25 09:10:25 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 16:46:06 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int		ft_putchar_fd(char c, int fd);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_toupper(int a);
-size_t	ft_strlen(const char *s);
-int		ft_count_length(int n);
 int		ft_unsigned_putnbr_fd(unsigned int n, int fd);
 int		ft_printf(const char *input, ...);
 int		ft_printhexa(unsigned long int number, int token);

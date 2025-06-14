@@ -6,11 +6,11 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 09:26:58 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/23 14:51:56 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 15:57:00 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putstr_fd(char *s, int fd)
 {

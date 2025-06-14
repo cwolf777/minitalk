@@ -6,11 +6,11 @@
 /*   By: cwolf <cwolf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 10:44:50 by cwolf             #+#    #+#             */
-/*   Updated: 2024/10/25 09:14:12 by cwolf            ###   ########.fr       */
+/*   Updated: 2025/06/13 16:05:45 by cwolf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_deligate(const char *input, int i, va_list args);
 
