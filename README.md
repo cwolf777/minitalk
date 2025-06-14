@@ -22,11 +22,15 @@ The client sends messages to the server, bit by bit, with each bit encoded as a 
 
 🧹 Clean error handling and memory-safe implementation
 
+
 🔗 Dependencies
+
 libft – cloned automatically and compiled as part of the build process
 
 ⚙️ Build Instructions
+
 make
+
 This builds both client and server executables. If libft is not present, it is automatically cloned from GitHub.
 
 💬 Usage
