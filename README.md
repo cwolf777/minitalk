@@ -13,8 +13,11 @@ The client sends messages to the server, bit by bit, with each bit encoded as a 
 🎯 Features:
 
 🔁 Bit-by-bit message transmission via SIGUSR1 and SIGUSR2
+
 🧠 Bitmask logic to encode and decode characters
+
 🧵 Asynchronous signal handling using sigaction
+
 ✅ Full message integrity with null-terminator detection
 
 🧹 Clean error handling and memory-safe implementation
